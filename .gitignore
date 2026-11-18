@@ -11,3 +11,6 @@ desktop.ini
 # Lokale Notizen / Geheimnisse
 .env
 *.local.*
+
+# Original-Fotos (groß, enthalten GPS-Daten), Web-Versionen liegen in assets/fotos/
+Teamfotos/

@@ -150,6 +150,31 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 .hero h1 em { font-style: normal; border-bottom: 2px solid var(--gold); }
 .hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
 
+/* Kopfbereich mit Foto im Hintergrund (.hero.has-photo)
+   Foto füllt die ganze Fläche, eine flache Tusche-Schicht darüber hält den Text lesbar. */
+.hero.has-photo {
+  position: relative; isolation: isolate; border-bottom: 0;
+  min-height: min(calc(100svh - 64px), 860px); padding: 72px 0 32px;
+  display: flex; color: #fff;
+}
+.hero.has-photo > .wrap { width: 100%; display: flex; flex-direction: column; }
+.hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--ink); overflow: hidden; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(22, 22, 22, .55); }
+.has-photo .hero-grid { grid-template-columns: 1fr; }
+.has-photo .lattice { display: none; }
+.has-photo .kicker { color: var(--gold-light); }
+.has-photo .kicker::before, .has-photo .kicker::after { background: var(--gold-light); }
+.has-photo h1 em { border-bottom-color: var(--gold-light); }
+.has-photo .lead { color: #EDEAE2; }
+.has-photo .actions .button { color: #fff; border-color: #fff; }
+.has-photo .actions .button:hover { background: rgba(255, 255, 255, .12); }
+.has-photo .actions .button.primary { background: #fff; color: var(--ink); }
+.has-photo .actions .button.primary:hover { background: var(--sunk); }
+.has-photo .next-call { margin-top: auto; background: var(--ground); color: var(--ink); border-color: var(--ground); }
+.has-photo .hero-grid { margin-bottom: 48px; }
+.hero-credit { margin: 12px 0 0; font-size: 13px; color: var(--on-ink); }
+
 /* Ornament: Gitterwerk nach Wiener Werkstätte */
 .lattice { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; width: 100%; aspect-ratio: 1; }
 .lattice i { border: 1px solid var(--line); }
@@ -312,6 +337,9 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
 @media (max-width: 640px) {
   :root { --gap: 16px; --section: 64px; }
   .hero { padding: 40px 0 36px; }
+  .hero.has-photo { padding: 48px 0 24px; }
+  .has-photo .hero-grid { margin-bottom: 32px; }
+  .hero-bg img { object-position: 22% 40%; }
   .next-call { margin-top: 40px; grid-template-columns: auto 1fr; }
   .next-call .go { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); justify-content: space-between; }
   .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 16px 0; }

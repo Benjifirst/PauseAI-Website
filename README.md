@@ -14,7 +14,7 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 | `js/main.js` | Logik: nächster Donnerstag-Call, Countdown, Terminliste, Team |
 | `css/style.css` | Gestaltung |
 | `impressum.html`, `datenschutz.html` | Rechtliches, rote Platzhalter (`class="todo"`) noch ausfüllen |
-| `assets/` | Logo, später Teamfotos (`assets/team/…`) |
+| `assets/` | Logo, Gruppenfoto im Kopfbereich (`assets/fotos/`), später Porträts (`assets/team/…`) |
 | `fonts/PoiretOne-Regular.ttf` | Titelschrift, lokal eingebunden (kein Google Fonts) |
 | `vorschau-schrift.html`, `fonts/vorschau/` | Nur zum Vergleichen von Titelschriften, nicht verlinkt |
 
@@ -60,7 +60,7 @@ git push -u origin mein-aenderungsname
 ```
 Danach auf GitHub einen Pull Request öffnen.
 
-Bitte keine privaten Daten (Telefonnummern, Privatadressen, Passwörter) ins Repository stellen.
+Bitte keine privaten Daten (Telefonnummern, Privatadressen, Passwörter) ins Repository stellen. Fotos vorher verkleinern (ca. 1600 px breit) und die Metadaten entfernen, denn Handyfotos enthalten meist den GPS-Standort.
 
 ## Lokal ansehen
 
