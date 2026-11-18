@@ -1,0 +1,331 @@
+/* PauseAI Österreich · Stil „Florahof“
+   Stiller Wiener Jugendstil: Putzweiß, schwarze Tusche, eine Goldlinie,
+   eckige Formen, kleine Quadrate. Keine Schatten, keine Verläufe, keine Rundungen.
+
+   Regeln (überall gleich):
+   · Eine linke Kante: Überschriften, Karten, Zeilen und Zitate beginnen bündig.
+   · Eine Marke: Goldquadrat + gesperrte Versalien in Gold (.kicker, .label, .row .k).
+   · Eine Überschrift: h3 in Karten und Zeilen ist immer gleich gesetzt.
+   · Schwarz = Aufruf (.card.dark). Hauptknopf (.primary) nur im
+     Kopfbereich, im Menü und im Schlussaufruf.
+
+   Bausteine:
+   .section-title  Abschnittskopf: Name in Versalien, schwarze Linie
+   .head           Kopfzeile eines Abschnitts: großer Satz links, Einleitung rechts
+   .cards/.card    Karten mit Goldlinie oben: Marke, Überschrift, Text, Knopf
+   .rows/.row      Zeilenliste: Marke links, Inhalt Mitte, Aktion rechts */
+
+@font-face {
+  font-family: 'Poiret One';
+  src: url('../fonts/PoiretOne-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --ground: #F7F5F0;
+  --sunk: #E9E6DE;
+  --panel: #EFECE4;
+  --ink: #161616;
+  --ink-soft: #3A3A3A;
+  --muted: #55524A;
+  --dim: #B9B4A8;
+  --line: #CFCBC0;
+  --gold: #9C7A1E;
+  --gold-deep: #7A5E12;
+  --gold-light: #C9A94F;   /* Gold auf Schwarz */
+  --on-ink: #D9D5CB;       /* Nebentext auf Schwarz */
+  --success: #22706E;
+  --at-red: #C8102E;       /* nur für die Flagge */
+  --title: 'Poiret One', 'Segoe UI Light', sans-serif;
+  --body: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --page: 1000px;
+  --gap: 24px;             /* Seitenrand und Abstand zwischen Spalten */
+  --pad: 20px;             /* Innenabstand von Karten und Kästen */
+  --col: 172px;            /* linke Markenspalte in Zeilen und Zitaten */
+  --section: 72px;         /* Abstand zwischen Abschnitten */
+  --caps: .2em;            /* Sperrung aller Versal-Marken */
+  --dot: 6px;              /* Goldquadrat */
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.55 var(--body);
+  -webkit-text-size-adjust: 100%;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--gold); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+p { margin: 0 0 12px; }
+h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
+
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gap); }
+.muted { color: var(--muted); }
+.note { font-size: 14px; color: var(--muted); margin: 16px 0 0; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 16px; background: var(--ink); color: #fff; padding: 8px 14px; z-index: 100; }
+
+/* ---------- Marken (gesperrte Versalien) ---------- */
+.kicker, .label, .row .k, .section-title, .tag,
+.footer-grid h4, .page h2, .next-call .wd, .next-call .mon {
+  font-size: 12px; line-height: 1.5; letter-spacing: var(--caps); text-transform: uppercase;
+}
+
+.kicker, .label, .row .k {
+  color: var(--gold-deep); font-weight: 400; margin: 0;
+  display: flex; align-items: baseline; gap: 10px;   /* Quadrat sitzt an der ersten Zeile */
+}
+.kicker::before, .label::before, .row .k::before {
+  content: ''; width: var(--dot); height: var(--dot); background: var(--gold); flex: none;
+  position: relative; top: -1px;
+}
+.kicker::after { content: ''; flex: 1; height: 1px; background: var(--gold); align-self: center; }
+
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 400;
+  border: 1px solid var(--gold); color: var(--gold-deep); padding: 1px 8px; margin-left: 10px; vertical-align: 2px;
+}
+
+/* ---------- Kopfzeile ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ground);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
+
+/* Wortmarke: Name, direkt danach die Flagge */
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.site-header .brand { margin-right: auto; }
+.brand-name { font: 400 20px/1 var(--title); letter-spacing: .22em; margin-right: -.22em; white-space: nowrap; }
+.brand-name b { font-weight: 400; color: var(--gold-deep); }
+
+.flag {
+  display: block; width: 24px; height: 16px; flex: none;
+  border: 1px solid var(--line);
+  background: linear-gradient(var(--at-red) 0 33.333%, #fff 33.333% 66.666%, var(--at-red) 66.666%);
+}
+
+/* Logo: rechts außen, führt wie die Wortmarke zur Startseite */
+.brand-mark { display: block; width: 30px; height: 30px; flex: none; }
+.brand-mark img { width: 100%; height: 100%; }
+
+.nav { display: flex; align-items: center; gap: 2px; }
+.nav a { text-decoration: none; font-size: 14px; padding: 8px 10px; }
+.nav a:hover { text-decoration: underline; text-decoration-color: var(--gold); }
+.nav .button { margin-left: 8px; }
+
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--ink); width: 40px; height: 40px;
+  cursor: pointer; padding: 0; align-items: center; justify-content: center; flex-direction: column; gap: 5px;
+}
+.nav-toggle span { display: block; width: 18px; height: 1px; background: var(--ink); }
+
+/* ---------- Knöpfe ---------- */
+.button {
+  display: inline-block; font: 15px/1.2 var(--body); padding: 11px 20px;
+  border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.button:hover { background: var(--sunk); text-decoration: none; }
+.button.primary { background: var(--ink); color: #fff; }
+.button.primary:hover { background: var(--ink-soft); }
+.button.small { font-size: 14px; padding: 8px 14px; }
+/* Textlink mit Pfeil, steht bündig an der linken Kante */
+.button.quiet { border-color: transparent; text-decoration: underline; text-underline-offset: 4px; padding-inline: 0; border-inline-width: 0; }
+.button.quiet:hover { background: none; text-decoration-color: var(--gold); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
+.actions.after { margin-top: 24px; }
+
+/* ---------- Kopfbereich ---------- */
+.hero { padding: 56px 0 48px; border-bottom: 1px solid var(--line); }
+.hero-grid { display: grid; grid-template-columns: 1fr 240px; gap: 48px; align-items: end; }
+.hero h1 { font: 400 clamp(44px, 8vw, 76px)/1.04 var(--title); letter-spacing: .06em; margin: 24px 0 16px; }
+.hero h1 em { font-style: normal; border-bottom: 2px solid var(--gold); }
+.hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
+
+/* Ornament: Gitterwerk nach Wiener Werkstätte */
+.lattice { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; width: 100%; aspect-ratio: 1; }
+.lattice i { border: 1px solid var(--line); }
+.lattice i.k { background: var(--ink); border-color: var(--ink); }
+.lattice i.g { border-color: var(--gold); position: relative; }
+.lattice i.g::after { content: ''; position: absolute; inset: 30%; background: var(--gold); }
+
+/* Nächster Termin */
+.next-call { margin-top: 48px; border: 1px solid var(--ink); display: grid; grid-template-columns: auto 1fr auto; }
+.next-call .date {
+  background: var(--ink); color: #fff; padding: 16px var(--pad); text-align: center; min-width: 96px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.next-call .day { font: 300 34px/1 var(--body); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.next-call .info { padding: 16px var(--pad); display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.next-call .info strong { font-weight: 600; font-size: 17px; }
+.next-call .meta { color: var(--muted); font-size: 14px; }
+.next-call .go { display: flex; align-items: center; padding: 16px var(--pad); border-left: 1px solid var(--line); gap: 16px; }
+.countdown { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.live { color: var(--success); font-weight: 600; }
+
+/* ---------- Abschnitte ---------- */
+section.block { padding: var(--section) 0 0; }
+section.block.last { padding-bottom: var(--section); }
+.section-title {
+  font-weight: 600;
+  margin: 0 0 24px; padding-bottom: 8px; border-bottom: 1px solid var(--ink);
+}
+.head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 28px; }
+.display { font: 400 clamp(30px, 4.6vw, 44px)/1.12 var(--title); letter-spacing: .04em; margin: 0; }
+.intro { font-size: 17px; margin: 0; max-width: 46ch; }
+
+/* ---------- Karten ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+.cards.two { grid-template-columns: repeat(2, 1fr); }
+.card {
+  border: 1px solid var(--line); border-top: 2px solid var(--gold); background: var(--ground);
+  padding: var(--pad); display: flex; flex-direction: column;
+}
+.card .label { margin-bottom: 12px; }
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--muted); font-size: 15px; margin: 0 0 20px; flex: 1; }
+.card p:last-child { margin-bottom: 0; }
+.card .button, .card .actions { align-self: flex-start; }
+.card.dark { background: var(--ink); color: #fff; border-color: var(--ink); border-top-color: var(--gold); }
+.card.dark p { color: var(--on-ink); }
+.card.dark .label { color: var(--gold-light); }
+.card.dark .label::before { background: var(--gold-light); }
+.card.dark .button { border-color: #fff; color: #fff; }
+.card.dark .button:hover { background: var(--ink-soft); }
+
+/* Team: kompakte Karte, Porträt links */
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.member { padding: 0; display: grid; grid-template-columns: 84px 1fr; }
+.member .portrait {
+  aspect-ratio: 1; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel);
+  display: flex; align-items: center; justify-content: center; overflow: hidden; align-self: start;
+}
+.member .portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.member .initials { font: 400 30px/1 var(--title); letter-spacing: .12em; padding-left: .12em; }
+.member .body { padding: 14px 16px 16px; display: flex; flex-direction: column; min-width: 0; }
+.member .label { font-size: 11px; letter-spacing: .08em; hyphens: auto; margin-bottom: 6px; }   /* lange Rollen in schmaler Spalte */
+.member h3 { margin-bottom: 4px; }
+.member p { color: var(--muted); font-size: 14px; margin: 0; }
+
+/* ---------- Zeilen ---------- */
+.rows { border-top: 1px solid var(--ink); }
+.row {
+  display: grid; grid-template-columns: var(--col) 1fr auto; gap: var(--gap); align-items: center;
+  padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+}
+.row .k { font-variant-numeric: tabular-nums; }
+/* Datum statt Marke: große Zahl, darunter die Marke */
+.row .k.date { display: block; }
+.row .k.date::before { content: none; }
+.row .k .big { display: block; font-size: 26px; font-weight: 300; letter-spacing: 0; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+.row h3 { margin-bottom: 2px; }
+.row .v { font-size: 17px; }
+.row p { margin: 0; color: var(--muted); font-size: 15px; }
+.row .meta { margin-top: 6px; font-size: 14px; color: var(--ink); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.row .meta span { display: inline-flex; align-items: center; gap: 8px; }
+.row .meta span::before { content: ''; width: 4px; height: 4px; background: var(--ink); }
+.row .meta span.open { color: var(--muted); font-style: italic; }
+.row .meta span.open::before { background: none; width: 5px; height: 5px; border: 1px solid var(--gold-deep); }
+.row .arrow { color: var(--gold-deep); transition: transform .15s; }
+a.row:hover { text-decoration: none; }
+a.row:hover .v { text-decoration: underline; text-decoration-color: var(--gold); }
+a.row:hover .arrow { transform: translateX(4px); }
+.row.empty { color: var(--muted); font-size: 15px; grid-template-columns: 1fr; }
+/* Liste ohne Markenspalte: nur Goldquadrat vor der Überschrift */
+.rows.plain .row { grid-template-columns: 1fr; }
+.rows.plain h3 { display: flex; align-items: baseline; gap: 12px; }
+.rows.plain h3::before { content: ''; width: var(--dot); height: var(--dot); background: var(--gold); flex: none; position: relative; top: -2px; }
+.rows.plain p { padding-left: calc(var(--dot) + 12px); }
+
+/* ---------- Zitate (gleiches Raster wie Zeilen) ---------- */
+.quotes { margin-top: 48px; border-top: 1px solid var(--ink); }
+.quote { margin: 0; padding: 28px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: var(--col) 1fr; gap: var(--gap); align-items: start; }
+.quote .k { padding-top: 10px; }
+.quote blockquote { margin: 0; font: 400 clamp(22px, 3vw, 28px)/1.3 var(--title); letter-spacing: .02em; }
+.quote figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
+.quote figcaption b { color: var(--ink); font-weight: 600; }
+
+
+/* ---------- Fußzeile ---------- */
+.site-footer { border-top: 2px solid var(--gold); padding: 40px 0 48px; font-size: 14px; color: var(--muted); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.footer-grid .brand { margin-bottom: 12px; color: var(--ink); }
+.footer-grid h4 { color: var(--ink); margin: 0 0 10px; font-weight: 600; }
+.footer-grid ul { list-style: none; padding: 0; margin: 0; }
+.footer-grid li { padding: 3px 0; }
+.footer-grid a { text-decoration: none; }
+.footer-grid a:hover { text-decoration: underline; text-decoration-color: var(--gold); }
+.footer-bottom {
+  margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.page-footer .footer-bottom { margin-top: 0; padding-top: 0; border-top: 0; }
+
+/* ---------- Unterseiten (Impressum, Datenschutz) ---------- */
+.page { padding: 56px 0 72px; }
+/* Zurück-Link: links oben im Inhalt, über der Marke */
+.page .back { margin: -24px 0 20px; }
+.page h1 { font: 400 clamp(36px, 6vw, 56px)/1.05 var(--title); letter-spacing: .06em; margin: 24px 0 32px; }
+.page h2 {
+  font-weight: 600;
+  margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--ink);
+}
+.page .prose { max-width: 70ch; }
+.page .lead-in { max-width: 62ch; margin-bottom: 32px; }
+ul.marks { margin: 0; padding: 0; list-style: none; }
+ul.marks li { padding: 6px 0 6px 22px; position: relative; }
+ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width: var(--dot); height: var(--dot); background: var(--gold); }
+.todo { background: var(--sunk); border-left: 2px solid var(--at-red); padding: 2px 6px; }
+
+/* ---------- Schmal ---------- */
+@media (max-width: 900px) {
+  .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .lattice { display: none; }
+  .cards, .cards.two { grid-template-columns: 1fr; }
+  .head { grid-template-columns: 1fr; gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > :first-child { grid-column: 1 / -1; }
+
+  .nav-toggle { display: inline-flex; }
+  .nav {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--ground); border-bottom: 1px solid var(--ink);
+    flex-direction: column; align-items: stretch; padding: 8px var(--gap) 16px; gap: 0;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .nav .button { margin: 12px 0 0; padding: 11px 14px; border-bottom-color: var(--ink); text-align: center; }
+}
+
+@media (max-width: 640px) {
+  :root { --gap: 16px; --section: 64px; }
+  .hero { padding: 40px 0 36px; }
+  .next-call { margin-top: 40px; grid-template-columns: auto 1fr; }
+  .next-call .go { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); justify-content: space-between; }
+  .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 16px 0; }
+  .row .k { grid-column: 1 / -1; }
+  .row .k .big { display: inline; font-size: 20px; margin-right: 8px; }
+  .row > :nth-child(2) { grid-column: 1; }
+  .quote { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+  .quote .k { padding-top: 0; }
+  .team { grid-template-columns: 1fr; gap: 12px; }
+  .brand-name { font-size: 17px; letter-spacing: .16em; margin-right: -.16em; }
+  .site-header .wrap { gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .row .arrow { transition: none; }
+}

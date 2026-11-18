@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PauseAI Österreich">
+  <rect x="0.5" y="0.5" width="31" height="31" fill="#F7F5F0" stroke="#161616"/>
+  <rect x="10" y="8" width="4" height="16" fill="#161616"/>
+  <rect x="18" y="8" width="4" height="16" fill="#161616"/>
+  <rect x="3" y="3" width="3" height="3" fill="#9C7A1E"/>
+  <line x1="3" y1="28.5" x2="29" y2="28.5" stroke="#9C7A1E" stroke-width="1"/>
+</svg>
