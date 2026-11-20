@@ -1,6 +1,6 @@
 /* ============================================================
-   HIER PFLEGEN: Links, Kontakt, Team und Termine
-   Für neue Termine oder Teammitglieder nur diese Datei ändern.
+   HIER PFLEGEN: Links, Kontakt und Termine
+   Für neue Termine nur diese Datei ändern.
    ============================================================ */
 
 window.PAUSEAI_AT = {
@@ -21,16 +21,6 @@ window.PAUSEAI_AT = {
     beginn: '18:00',
     dauerMinuten: 60
   },
-
-  // Team. Reihenfolge = Reihenfolge auf der Seite.
-  // foto: optional, z. B. 'assets/team/vorname.jpg' (quadratisch, wird schwarz-weiß gezeigt).
-  //       Ohne Foto erscheinen die Initialen.
-  // platzhalter: true = wird als Entwurf markiert; entfernen, sobald echte Angaben drinstehen.
-  team: [
-    { name: 'Benjamin Legerer', rolle: 'Gründer & Chapter Lead', text: '', foto: '' },   // Foto folgt: z. B. 'assets/team/benjamin.jpg'
-    { name: 'Vorname Nachname', rolle: 'Veranstaltungen',          text: 'Ein Satz dazu, warum du dich engagierst.', foto: '', platzhalter: true },
-    { name: 'Vorname Nachname', rolle: 'Öffentlichkeitsarbeit',    text: 'Ein Satz dazu, warum du dich engagierst.', foto: '', platzhalter: true }
-  ],
 
   // Einzelne Termine. Vergangene werden automatisch ausgeblendet.
   // Format:

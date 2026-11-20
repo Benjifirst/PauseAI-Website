@@ -157,37 +157,6 @@
     });
   }
 
-  // ---------- Team ----------
-  function initials(name) {
-    return name.split(/\s+/).filter(Boolean).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
-  }
-
-  function renderTeam() {
-    var grid = document.getElementById('team-list');
-    if (!grid) return;
-
-    (cfg.team || []).forEach(function (m) {
-      var card = el('article', 'card member');
-      var portrait = el('div', 'portrait');
-      if (m.foto) {
-        var img = el('img');
-        img.src = m.foto; img.alt = 'Porträt von ' + m.name; img.loading = 'lazy';
-        portrait.appendChild(img);
-      } else {
-        portrait.appendChild(el('span', 'initials', m.platzhalter ? '?' : initials(m.name)));
-        portrait.setAttribute('aria-hidden', 'true');
-      }
-      card.appendChild(portrait);
-
-      var body = el('div', 'body');
-      if (m.rolle) body.appendChild(el('span', 'label', m.rolle));
-      body.appendChild(el('h3', null, m.name));
-      if (m.text) body.appendChild(el('p', null, m.text));
-      card.appendChild(body);
-      grid.appendChild(card);
-    });
-  }
-
   // ---------- Ornament (Gitterwerk) ----------
   var lattice = document.querySelector('.lattice');
   if (lattice) {
@@ -253,6 +222,5 @@
 
   renderNext();
   renderEvents();
-  renderTeam();
   setInterval(renderNext, 30000);
 })();

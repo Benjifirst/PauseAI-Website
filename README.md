@@ -10,11 +10,11 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 |---|---|
 | `index.html` | Startseite: Über uns, Warum, Termine, Team, Mitmachen & Kontakt |
 | `vorschlag.html`, `weiterlesen.html` | Eigene Seiten: unser Vorschlag, Lesestoff und Links |
-| `js/inhalte.js` | **Hier pflegen:** Call-Link, WhatsApp, E-Mail, Team, Termine |
-| `js/main.js` | Logik: nächster Donnerstag-Call, Countdown, Terminliste, Team |
+| `js/inhalte.js` | **Hier pflegen:** Call-Link, WhatsApp, E-Mail, Termine |
+| `js/main.js` | Logik: nächster Donnerstag-Call, Countdown, Terminliste |
 | `css/style.css` | Gestaltung |
 | `impressum.html`, `datenschutz.html` | Rechtliches, rote Platzhalter (`class="todo"`) noch ausfüllen |
-| `assets/` | Logo, Gruppenfoto im Kopfbereich (`assets/fotos/`), später Porträts (`assets/team/…`) |
+| `assets/` | Logo, Gruppenfoto im Team-Abschnitt (`assets/fotos/`) |
 | `fonts/PoiretOne-Regular.ttf` | Titelschrift, lokal eingebunden (kein Google Fonts) |
 | `vorschau-schrift.html`, `fonts/vorschau/` | Nur zum Vergleichen von Titelschriften, nicht verlinkt |
 
@@ -31,14 +31,6 @@ Unter `termine` einen Eintrag ergänzen:
 ```
 
 Vergangene Termine verschwinden automatisch. Der wöchentliche Donnerstag-Call (18:00, Wiener Zeit) wird automatisch berechnet.
-
-### Teammitglied hinzufügen
-
-Unter `team` einen Eintrag ergänzen. Foto optional: quadratisches Bild nach `assets/team/` legen und bei `foto` den Pfad eintragen, sonst werden Initialen gezeigt.
-
-```js
-{ name: 'Vorname Nachname', rolle: 'Veranstaltungen', text: 'Ein Satz, warum ich dabei bin.', foto: 'assets/team/vorname.jpg' },
-```
 
 ## Mitarbeiten
 

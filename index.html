@@ -40,13 +40,7 @@
 <main id="inhalt">
 
   <!-- Kopfbereich -->
-  <section class="hero has-photo" id="top">
-    <div class="hero-bg">
-      <img src="assets/fotos/team-treffen-2000.jpg"
-           srcset="assets/fotos/team-treffen-1100.jpg 1100w, assets/fotos/team-treffen-2000.jpg 2000w"
-           sizes="100vw" width="2000" height="1252" fetchpriority="high"
-           alt="Gruppenfoto: fünf Mitglieder von PauseAI Österreich beim ersten Live-Treffen im Kaffeehaus.">
-    </div>
+  <section class="hero" id="top">
     <div class="wrap">
       <div class="hero-grid">
         <div>
@@ -77,7 +71,6 @@
           <a class="button primary small" href="https://luma.com/fyfjfejs" target="_blank" rel="noopener" data-call-link data-label-nolink="Link anfragen">Anmelden</a>
         </div>
       </div>
-      <p class="hero-credit">Unser erstes Live-Treffen · Café Stein, Wien, November 2026</p>
     </div>
   </section>
 
@@ -178,7 +171,13 @@
         <p class="display">Die Menschen hinter PauseAI Österreich.</p>
         <p class="intro">Ein kleines, wachsendes Team von Freiwilligen. Wir suchen Verstärkung für Organisation, Social Media und Gespräche mit der Politik.</p>
       </div>
-      <div class="team" id="team-list"></div>
+      <figure class="team-photo">
+        <img src="assets/fotos/team-treffen-2000.jpg"
+             srcset="assets/fotos/team-treffen-1100.jpg 1100w, assets/fotos/team-treffen-2000.jpg 2000w"
+             sizes="(max-width: 1200px) 100vw, 1200px" width="2000" height="1252" loading="lazy"
+             alt="Gruppenfoto: fünf Mitglieder von PauseAI Österreich beim ersten Live-Treffen im Kaffeehaus.">
+        <figcaption>Unser erstes Live-Treffen · Café Stein, Wien, November 2026</figcaption>
+      </figure>
     </div>
   </section>
 
