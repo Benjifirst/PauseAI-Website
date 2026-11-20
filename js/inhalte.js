@@ -6,10 +6,10 @@
 window.PAUSEAI_AT = {
 
   // Anmeldung zum wöchentlichen Online-Call (Luma → Google Meet).
-  // Muss auf eine Seite mit allen Terminen zeigen, nicht auf ein einzelnes Event.
-  // Vorläufig das Luma-Profil; später besser ein eigener Kalender (z. B. luma.com/pauseai-austria).
+  // Muss auf eine Seite mit allen Terminen zeigen, nicht auf ein einzelnes Event:
+  // der Luma-Kalender von PauseAI Austria.
   // Leer lassen = Knopf führt zum Kontaktbereich.
-  callLink: 'https://luma.com/user/usr-ThXknghCRYIfSD8',
+  callLink: 'https://luma.com/pauseAI_austria',
 
   // WhatsApp-Gruppe von PauseAI Österreich. Leer = wird ausgeblendet.
   whatsapp: 'https://chat.whatsapp.com/JxvFMVZ1MMQ5mFDlwAmSYH',
