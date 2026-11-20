@@ -19,6 +19,7 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 | `assets/` | Logo, Icons, Vorschaubild für geteilte Links (`vorschaubild.jpg`), Gruppenfoto (`assets/fotos/`) |
 | `fonts/PoiretOne-Regular.ttf`, `fonts/OFL.txt` | Titelschrift, lokal eingebunden (kein Google Fonts), mit Lizenztext |
 | `404.html` | Fehlerseite für unbekannte Adressen |
+| `robots.txt`, `sitemap.xml` | Für Suchmaschinen; neue Unterseiten in `sitemap.xml` ergänzen |
 
 ## Häufige Änderungen
 

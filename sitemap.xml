@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Seiten für Suchmaschinen. Impressum und Datenschutz fehlen absichtlich (noindex). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pauseai.at/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://pauseai.at/vorschlag.html</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://pauseai.at/weiterlesen.html</loc><lastmod>2026-11-20</lastmod></url>
+</urlset>
