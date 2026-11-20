@@ -43,8 +43,8 @@ window.PAUSEAI_AT = {
     {
       datum: '2026-11-17',
       beginn: '17:00',
-      titel: 'Erstes Live-Treffen',
-      untertitel: 'Zum ersten Mal vor Ort: einander kennenlernen, austauschen und die nächsten Schritte planen.',
+      titel: 'Erstes Treffen vor Ort',
+      untertitel: 'Wir lernen einander kennen, tauschen uns aus und planen die nächsten Schritte.',
       ort: 'Café Stein, Währinger Straße 6–8, 1090 Wien',
       link: ''
     }
