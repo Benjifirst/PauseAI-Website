@@ -1,4 +1,4 @@
-"""Setzt Name, Adresse und E-Mail aus GitHub-Secrets in die Rechtsseiten ein.
+"""Setzt Name und E-Mail aus GitHub-Secrets in die Seiten ein.
 
 Die Daten stehen nicht im Repository, sondern nur als Secrets in den
 Repo-Einstellungen (Settings > Secrets and variables > Actions).
@@ -8,7 +8,7 @@ import html
 import os
 import sys
 
-KEYS = ["IMPRESSUM_NAME", "IMPRESSUM_STRASSE", "IMPRESSUM_ORT", "IMPRESSUM_EMAIL"]
+KEYS = ["IMPRESSUM_NAME", "IMPRESSUM_EMAIL"]
 
 values = {}
 for key in KEYS:

@@ -47,13 +47,22 @@
     return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute, +parts.second);
   }
 
+  function isoDate(ts) {
+    return new Date(ts).toISOString().slice(0, 10);
+  }
+
   function nextWeekly(call, now) {
-    var t = (call.beginn || '18:00').split(':');
+    var t = (call.beginn || '19:00').split(':');
     var d = new Date(now);
     var diff = (call.wochentag - d.getUTCDay() + 7) % 7;
     var start = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), +t[0], +t[1]) + diff * 864e5;
     var end = start + (call.dauerMinuten || 60) * 6e4;
     if (diff === 0 && now >= end) { start += 7 * 864e5; end += 7 * 864e5; }
+    // Ausgefallene Termine überspringen
+    var ausfaelle = call.ausfaelle || [];
+    for (var i = 0; i < 52 && ausfaelle.indexOf(isoDate(start)) !== -1; i++) {
+      start += 7 * 864e5; end += 7 * 864e5;
+    }
     return { start: start, live: now >= start && now < end };
   }
 
@@ -81,6 +90,9 @@
     external(a, cfg.whatsapp);
   });
 
+  // Platzhalter (lokal, ohne eingesetztes Secret) wie ein leeres Feld behandeln
+  if (cfg.email && cfg.email.indexOf('%%') === 0) cfg.email = '';
+
   document.querySelectorAll('[data-email]').forEach(function (a) {
     if (!cfg.email) { a.hidden = true; return; }
     a.hidden = false;
@@ -100,7 +112,7 @@
     box.querySelector('.mon').textContent = MONATE_KURZ[d.getUTCMonth()];
     box.querySelector('.meta').textContent =
       WOCHENTAGE[d.getUTCDay()] + ', ' + d.getUTCDate() + '. ' + MONATE[d.getUTCMonth()] +
-      ' · ' + cfg.wochenCall.beginn + ' Uhr · Google Meet';
+      ' · ' + cfg.wochenCall.beginn + ' Uhr (Wiener Zeit) · Google Meet';
     var cd = box.querySelector('.countdown');
     cd.textContent = n.live ? 'Läuft gerade' : countdownText(n.start - now);
     cd.classList.toggle('live', n.live);

@@ -285,13 +285,20 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > :first-child { grid-column: 1 / -1; }
 
-  .nav-toggle { display: inline-flex; }
+  .nav-toggle { display: inline-flex; order: 1; }   /* steht im HTML vor dem Menü (Tab-Reihenfolge), sichtbar ganz rechts */
   .nav {
     display: none; position: absolute; top: 64px; left: 0; right: 0;
     background: var(--ground); border-bottom: 1px solid var(--ink);
     flex-direction: column; align-items: stretch; padding: 8px var(--gap) 16px; gap: 0;
   }
   .nav.open { display: flex; }
+
+  /* Ohne JavaScript: kein Menü-Knopf, die Links stehen offen unter der Wortmarke */
+  html:not(.js) .nav-toggle { display: none; }
+  html:not(.js) .site-header .wrap { flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 8px; row-gap: 4px; }
+  html:not(.js) .nav { display: flex; position: static; flex-direction: row; flex-wrap: wrap; width: 100%; order: 2; padding: 0; border: 0; background: none; }
+  html:not(.js) .nav a { border-bottom: 0; padding: 8px 12px 8px 0; }
+  html:not(.js) .nav .button { margin: 0; padding: 8px 12px; }
   .nav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
   .nav .button { margin: 12px 0 0; padding: 11px 14px; border-bottom-color: var(--ink); text-align: center; }
 }

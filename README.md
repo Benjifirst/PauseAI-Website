@@ -12,12 +12,13 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 | `vorschlag.html`, `weiterlesen.html` | Eigene Seiten: unser Vorschlag, Lesestoff und Links |
 | `js/inhalte.js` | **Hier pflegen:** Call-Link, WhatsApp, E-Mail, Termine |
 | `js/main.js` | Logik: nächster Donnerstag-Call, Countdown, Terminliste |
+| `js/zurueck.js` | „Zurück zur Startseite“ auf Unterseiten: kehrt an die vorherige Stelle zurück |
 | `css/style.css` | Gestaltung |
-| `impressum.html`, `datenschutz.html` | Rechtliches; Name, Adresse und E-Mail stehen dort nur als `%%IMPRESSUM_…%%` (siehe „Veröffentlichen“) |
+| `impressum.html`, `datenschutz.html` | Rechtliches; Name und E-Mail stehen dort nur als `%%IMPRESSUM_…%%` (siehe „Veröffentlichen“) |
 | `.github/workflows/pages.yml` | Veröffentlicht die Seite bei jedem Push auf `main` |
-| `assets/` | Logo, Gruppenfoto im Team-Abschnitt (`assets/fotos/`) |
-| `fonts/PoiretOne-Regular.ttf` | Titelschrift, lokal eingebunden (kein Google Fonts) |
-| `vorschau-schrift.html`, `fonts/vorschau/` | Nur zum Vergleichen von Titelschriften, nicht verlinkt |
+| `assets/` | Logo, Icons, Vorschaubild für geteilte Links (`vorschaubild.jpg`), Gruppenfoto (`assets/fotos/`) |
+| `fonts/PoiretOne-Regular.ttf`, `fonts/OFL.txt` | Titelschrift, lokal eingebunden (kein Google Fonts), mit Lizenztext |
+| `404.html` | Fehlerseite für unbekannte Adressen |
 
 ## Häufige Änderungen
 
@@ -31,7 +32,7 @@ Unter `termine` einen Eintrag ergänzen:
 { datum: '2026-12-03', beginn: '18:30', titel: 'Vortragsabend', untertitel: '…', ort: 'Wien, …', link: '' },
 ```
 
-Vergangene Termine verschwinden automatisch. Der wöchentliche Donnerstag-Call (18:00, Wiener Zeit) wird automatisch berechnet.
+Vergangene Termine verschwinden automatisch. Der wöchentliche Donnerstag-Call (19:00, Wiener Zeit) wird automatisch berechnet. Fällt ein Call aus, das Datum unter `wochenCall.ausfaelle` eintragen.
 
 ## Mitarbeiten
 
@@ -59,7 +60,7 @@ Bitte keine privaten Daten (Telefonnummern, Privatadressen, Passwörter) ins Rep
 
 Jeder Push auf `main` geht automatisch auf https://pauseai.at online (GitHub Pages, siehe Reiter *Actions*).
 
-Name, Adresse und E-Mail fürs Impressum stehen absichtlich nicht im Code. Sie liegen als Secrets unter *Settings → Secrets and variables → Actions* (`IMPRESSUM_NAME`, `IMPRESSUM_STRASSE`, `IMPRESSUM_ORT`, `IMPRESSUM_EMAIL`) und werden beim Veröffentlichen eingesetzt. Lokal sieht man deshalb nur die Platzhalter. Fehlt ein Secret, bricht die Veröffentlichung ab.
+Name und E-Mail (Impressum, Datenschutz, Kontakt-Knopf) stehen absichtlich nicht im Code. Sie liegen als Secrets unter *Settings → Secrets and variables → Actions* (`IMPRESSUM_NAME`, `IMPRESSUM_EMAIL`) und werden beim Veröffentlichen eingesetzt. Lokal sieht man deshalb nur die Platzhalter, und der E-Mail-Knopf bleibt ausgeblendet. Fehlt ein Secret, bricht die Veröffentlichung ab.
 
 ## Lokal ansehen
 
