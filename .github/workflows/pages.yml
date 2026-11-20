@@ -1,0 +1,47 @@
+# Veröffentlicht die Website bei jedem Push auf main über GitHub Pages.
+# Name, Adresse und E-Mail fürs Impressum kommen aus Repo-Secrets
+# und stehen deshalb nicht im Code.
+name: Website veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Seite zusammenstellen
+        run: |
+          mkdir _site
+          rsync -a --exclude='.git*' --exclude='.github' --exclude='_site' --exclude='README.md' ./ _site/
+
+      - name: Kontaktdaten einsetzen
+        env:
+          IMPRESSUM_NAME: ${{ secrets.IMPRESSUM_NAME }}
+          IMPRESSUM_STRASSE: ${{ secrets.IMPRESSUM_STRASSE }}
+          IMPRESSUM_ORT: ${{ secrets.IMPRESSUM_ORT }}
+          IMPRESSUM_EMAIL: ${{ secrets.IMPRESSUM_EMAIL }}
+        run: python3 .github/scripts/kontaktdaten.py _site/impressum.html _site/datenschutz.html
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -13,7 +13,8 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 | `js/inhalte.js` | **Hier pflegen:** Call-Link, WhatsApp, E-Mail, Termine |
 | `js/main.js` | Logik: nächster Donnerstag-Call, Countdown, Terminliste |
 | `css/style.css` | Gestaltung |
-| `impressum.html`, `datenschutz.html` | Rechtliches, rote Platzhalter (`class="todo"`) noch ausfüllen |
+| `impressum.html`, `datenschutz.html` | Rechtliches; Name, Adresse und E-Mail stehen dort nur als `%%IMPRESSUM_…%%` (siehe „Veröffentlichen“) |
+| `.github/workflows/pages.yml` | Veröffentlicht die Seite bei jedem Push auf `main` |
 | `assets/` | Logo, Gruppenfoto im Team-Abschnitt (`assets/fotos/`) |
 | `fonts/PoiretOne-Regular.ttf` | Titelschrift, lokal eingebunden (kein Google Fonts) |
 | `vorschau-schrift.html`, `fonts/vorschau/` | Nur zum Vergleichen von Titelschriften, nicht verlinkt |
@@ -53,6 +54,12 @@ git push -u origin mein-aenderungsname
 Danach auf GitHub einen Pull Request öffnen.
 
 Bitte keine privaten Daten (Telefonnummern, Privatadressen, Passwörter) ins Repository stellen. Fotos vorher verkleinern (ca. 1600 px breit) und die Metadaten entfernen, denn Handyfotos enthalten meist den GPS-Standort.
+
+## Veröffentlichen
+
+Jeder Push auf `main` geht automatisch auf https://pauseai.at online (GitHub Pages, siehe Reiter *Actions*).
+
+Name, Adresse und E-Mail fürs Impressum stehen absichtlich nicht im Code. Sie liegen als Secrets unter *Settings → Secrets and variables → Actions* (`IMPRESSUM_NAME`, `IMPRESSUM_STRASSE`, `IMPRESSUM_ORT`, `IMPRESSUM_EMAIL`) und werden beim Veröffentlichen eingesetzt. Lokal sieht man deshalb nur die Platzhalter. Fehlt ein Secret, bricht die Veröffentlichung ab.
 
 ## Lokal ansehen
 
