@@ -25,7 +25,9 @@ window.PAUSEAI_AT = {
     beginn: '19:00',       // Wiener Zeit
     dauerMinuten: 60,
     // Donnerstage ohne Call (JJJJ-MM-TT). Die Seite springt dann zum nächsten Termin.
-    ausfaelle: ['2026-12-24', '2026-12-31']
+    ausfaelle: ['2026-12-24', '2026-12-31'],
+    // Donnerstage mit anderer Uhrzeit (JJJJ-MM-TT: 'HH:MM'). Vergangene Einträge stören nicht.
+    andereZeit: { '2026-11-26': '18:30' }
   },
 
   // Einzelne Termine. Vergangene werden automatisch ausgeblendet.
