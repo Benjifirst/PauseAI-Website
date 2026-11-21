@@ -133,7 +133,7 @@
       .sort(function (a, b) { return a.ts - b.ts; });
 
     if (!items.length) {
-      list.appendChild(el('div', 'row empty', 'Weitere Termine in Wien und anderswo in Österreich folgen in Kürze.'));
+      list.appendChild(el('div', 'row empty', 'Weitere Termine kündigen wir hier an, sobald sie feststehen.'));
       return;
     }
 
