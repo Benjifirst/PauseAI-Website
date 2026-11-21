@@ -158,17 +158,19 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 .lattice i.g::after { content: ''; position: absolute; inset: 30%; background: var(--gold); }
 
 /* Nächster Termin */
-.next-call { margin-top: 48px; border: 1px solid var(--ink); display: grid; grid-template-columns: auto 1fr auto; }
-.next-call .date {
-  background: var(--ink); color: #fff; padding: 16px var(--pad); text-align: center; min-width: 96px;
-  display: flex; flex-direction: column; justify-content: center;
+.next-call {
+  margin-top: 48px; border-left: 2px solid var(--gold); padding-left: 20px;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0 24px;
 }
-.next-call .day { font: 300 34px/1 var(--body); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
-.next-call .info { padding: 16px var(--pad); display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.next-call .date { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.next-call .wd, .next-call .mon { color: var(--gold-deep); }
+.next-call .day { font: 400 44px/1 var(--title); -webkit-text-stroke: .025em currentColor; margin: 2px 0; font-variant-numeric: tabular-nums; }
+.next-call .info { display: flex; flex-direction: column; gap: 2px; }
 .next-call .info strong { font-weight: 600; font-size: 17px; }
 .next-call .meta { color: var(--muted); font-size: 14px; }
-.next-call .go { display: flex; align-items: center; padding: 16px var(--pad); border-left: 1px solid var(--line); gap: 16px; }
+.next-call .go { display: flex; align-items: center; gap: 16px; }
 .countdown { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.countdown:not(.live) { display: none; }   /* nur „Läuft gerade“ anzeigen, keinen Countdown */
 .live { color: var(--success); font-weight: 600; }
 
 /* ---------- Abschnitte ---------- */
@@ -319,8 +321,10 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
 @media (max-width: 640px) {
   :root { --gap: 16px; --section: 64px; }
   .hero { padding: 40px 0 36px; }
-  .next-call { margin-top: 40px; grid-template-columns: auto 1fr; }
-  .next-call .go { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); justify-content: space-between; }
+  .next-call { margin-top: 40px; grid-template-columns: auto 1fr; gap: 0 16px; padding-left: 16px; }
+  .next-call .go { grid-column: 1 / -1; flex-direction: column; align-items: stretch; gap: 8px; padding-top: 18px; }
+  .next-call .go .button { text-align: center; font-size: 15px; padding: 13px; }   /* breit, gut mit dem Daumen zu treffen */
+  .next-call .countdown { order: 2; text-align: center; }
   .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 16px 0; }
   .row .k { grid-column: 1 / -1; }
   .row .k .big { display: inline; font-size: 20px; font-weight: 600; margin-right: 8px; }
@@ -343,9 +347,6 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
   /* Kopfzeile: Zeichen und Menü-Knopf gleich groß */
   .brand-mark, .nav-toggle { width: 36px; height: 36px; }
 
-  /* Termin-Kasten: Datumsspalte schmaler, mehr Platz für den Text */
-  .next-call .date { min-width: 76px; padding: 14px 12px; }
-  .next-call .info { padding: 14px 16px; }
   .next-call .info strong { font-size: 16px; }
 }
 
