@@ -112,7 +112,7 @@
     box.querySelector('.mon').textContent = MONATE_KURZ[d.getUTCMonth()];
     box.querySelector('.meta').textContent =
       WOCHENTAGE[d.getUTCDay()] + ', ' + d.getUTCDate() + '. ' + MONATE[d.getUTCMonth()] +
-      ' · ' + cfg.wochenCall.beginn + ' Uhr (Wiener Zeit) · Google Meet';
+      ' · ' + cfg.wochenCall.beginn + ' Uhr (österreichische Zeit) · Google Meet';
     var cd = box.querySelector('.countdown');
     cd.textContent = n.live ? 'Läuft gerade' : countdownText(n.start - now);
     cd.classList.toggle('live', n.live);

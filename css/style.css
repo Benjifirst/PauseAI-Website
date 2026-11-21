@@ -151,7 +151,7 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 .hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
 
 /* Ornament: Gitterwerk nach Wiener Werkstätte */
-.lattice { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; width: 100%; aspect-ratio: 1; }
+.lattice { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; width: 100%; aspect-ratio: 1; align-self: center; }
 .lattice i { border: 1px solid var(--line); }
 .lattice i.k { background: var(--ink); border-color: var(--ink); }
 .lattice i.g { border-color: var(--gold); position: relative; }
