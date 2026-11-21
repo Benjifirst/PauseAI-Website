@@ -198,16 +198,18 @@ section.block.last { padding-bottom: var(--section); }
 #ueber-uns .card .button::after, #warum .card .button::after { content: ' →'; }
 #ueber-uns .card .button:hover, #warum .card .button:hover { border-bottom-color: var(--gold); }
 
-/* ---------- Dunkler Abschnitt (Warum) ---------- */
-section.block.dark { background: var(--ink); color: #fff; padding-bottom: var(--section); margin-top: var(--section); }
-.dark .section-title { border-color: #fff; color: var(--gold-light); }
-.dark .intro, .dark .card p, .dark .note, .dark .quote figcaption { color: var(--on-ink); }
-.dark .quote figcaption b { color: #fff; }
-.dark .quotes { border-top-color: #fff; }
-.dark .quote { border-bottom-color: var(--ink-soft); }
-.dark .label { color: var(--gold-light); }
-.dark .label::before, .dark .kicker::before { background: var(--gold-light); }
-.dark .card { border-left-color: var(--gold-light); }
+/* ---------- Dunkler Abschnitt (Warum): nur am Handy schwarz ---------- */
+@media (max-width: 640px) {
+  section.block.dark { background: var(--ink); color: #fff; padding-bottom: var(--section); margin-top: var(--section); }
+  .dark .section-title { border-color: #fff; color: var(--gold-light); }
+  .dark .intro, .dark .card p, .dark .note, .dark .quote figcaption { color: var(--on-ink); }
+  .dark .quote figcaption b { color: #fff; }
+  .dark .quotes { border-top-color: #fff; }
+  .dark .quote { border-bottom-color: var(--ink-soft); }
+  .dark .label { color: var(--gold-light); }
+  .dark .label::before, .dark .kicker::before { background: var(--gold-light); }
+  .dark .card { border-left-color: var(--gold-light); }
+}
 
 .card.dark { background: var(--ink); color: #fff; border-color: var(--ink); border-top-color: var(--gold); }
 .card.dark p { color: var(--on-ink); }
