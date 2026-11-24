@@ -18,11 +18,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  # Bauen und Veröffentlichen sind getrennt (wie in GitHubs Vorlage): Direkt nach dem Hochladen
+  # im selben Job fand deploy-pages das Paket manchmal noch nicht („No artifacts named github-pages“).
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
 
@@ -40,5 +39,12 @@ jobs:
         with:
           path: _site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v5
