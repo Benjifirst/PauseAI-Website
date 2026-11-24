@@ -152,7 +152,7 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 .hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
 
 /* Stecker-Animation neben der Überschrift (js/stecker.js) */
-.stecker { width: 100%; aspect-ratio: 3 / 2; align-self: end; cursor: pointer; }
+.stecker { width: 100%; aspect-ratio: 3 / 2; align-self: start; cursor: pointer; }   /* Höhe richtet js/stecker.js am Erklärungstext aus */
 .stecker svg { width: 100%; height: 100%; }
 
 /* Nächster Termin */

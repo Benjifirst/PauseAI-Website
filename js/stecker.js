@@ -141,6 +141,22 @@
     slots.forEach(function (n) { n.setAttribute('height', SLOT_H * sq); n.setAttribute('y', SLOT_Y + SLOT_H * (1 - sq) / 2); });
   }
 
+  // ---------- Ausrichtung am Laptop ----------
+  // Die Oberkante des fertigen Logos steht auf Höhe der ersten Zeile des Erklärungstexts (.lead).
+  // Am Handy (eine Spalte) bleibt es beim Abstand aus dem CSS.
+  var grid = host.parentElement, lead = grid && grid.querySelector('.lead');
+  function align() {
+    if (!lead) return;
+    if (getComputedStyle(grid).gridTemplateColumns.split(' ').length < 2) { host.style.marginTop = ''; return; }
+    var logoTop = (SY - 1 - VB1[1]) / VB1[3] * host.offsetHeight;   // -1: halbe Rahmenstärke
+    var leadTop = lead.getBoundingClientRect().top - grid.getBoundingClientRect().top;
+    host.style.marginTop = Math.max(0, leadTop - logoTop) + 'px';
+  }
+  align();
+  window.addEventListener('resize', align);
+  window.addEventListener('load', align);                 // nach dem Laden der Schrift ändert sich die Höhe der Überschrift
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+
   // ---------- Abspielen ----------
   if (reduce || !window.requestAnimationFrame) { render(DURATION); return; }
 
