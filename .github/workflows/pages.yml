@@ -36,9 +36,9 @@ jobs:
           IMPRESSUM_NAME: ${{ secrets.IMPRESSUM_NAME }}
         run: python3 .github/scripts/kontaktdaten.py _site/impressum.html _site/datenschutz.html _site/js/inhalte.js
 
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
