@@ -10,7 +10,7 @@
 
    Bausteine:
    .section-title  Abschnittskopf: Name in Versalien, schwarze Linie
-   .head           Kopfzeile eines Abschnitts: großer Satz links, Einleitung rechts
+   .head           Kopfzeile eines Abschnitts: großer Satz, darunter die Einleitung in Grau
    .cards/.card    Karten mit Goldlinie links: Überschrift (Titelschrift), Text, Link/Knopf
    .block.dark     schwarzer Abschnitt (Warum)
    .rows/.row      Zeilenliste: Marke links, Inhalt Mitte, Aktion rechts */
@@ -44,6 +44,7 @@
   --pad: 20px;             /* Innenabstand von Karten und Kästen */
   --col: 172px;            /* linke Markenspalte in Zeilen und Zitaten */
   --section: 72px;         /* Abstand zwischen Abschnitten */
+  --hero-side: 340px;      /* Breite der Stecker-Animation rechts im Kopfbereich (Laptop) */
   --caps: .2em;            /* Sperrung aller Versal-Marken */
   --dot: 6px;              /* Goldquadrat */
 }
@@ -145,7 +146,7 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Kopfbereich ---------- */
 .hero { padding: 56px 0 48px; border-bottom: 1px solid var(--line); }
-.hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; }
+.hero-grid { display: grid; grid-template-columns: 1fr var(--hero-side); gap: 48px; align-items: end; }
 .hero h1 { font: 400 clamp(44px, 8vw, 76px)/1.04 var(--title); letter-spacing: .06em; margin: 24px 0 16px; }
 .hero h1 em { font-style: normal; border-bottom: 2px solid var(--gold); }
 .hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
@@ -157,9 +158,9 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 /* Nächster Termin */
 .next-call {
   margin-top: 48px; border-left: 2px solid var(--gold); padding-left: 20px;
-  display: grid; grid-template-columns: auto 1fr 340px; align-items: center; gap: 0 24px;
+  display: grid; grid-template-columns: auto 1fr var(--hero-side); align-items: center; gap: 0 24px;
 }
-/* rechte Spalte so breit wie die Animation darüber: der Anmelde-Knopf steht mittig unter dem Logo */
+/* rechte Spalte so breit wie die Animation darüber (--hero-side): der Anmelde-Knopf steht mittig unter dem Logo */
 .next-call .go { justify-content: center; }
 .next-call .date { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .next-call .wd, .next-call .mon { color: var(--gold-deep); }
@@ -179,9 +180,9 @@ section.block.last { padding-bottom: var(--section); }
   font-weight: 600;
   margin: 0 0 24px; padding-bottom: 8px; border-bottom: 1px solid var(--ink);
 }
-.head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 28px; }
+.head { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
 .display { font: 400 clamp(30px, 4.6vw, 44px)/1.12 var(--title); letter-spacing: .04em; margin: 0; }
-.intro { font-size: 17px; margin: 0; max-width: 46ch; }
+.intro { font-size: 17px; margin: 0; max-width: 62ch; color: var(--muted); }
 
 /* ---------- Karten: Goldlinie links, Titel in der Titelschrift ---------- */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px var(--gap); }
@@ -230,7 +231,9 @@ section.block.last { padding-bottom: var(--section); }
 .goal { margin: 28px 0 0; padding: 20px 24px; border-left: 2px solid var(--gold); background: var(--panel); font-size: 17px; max-width: 70ch; }
 .goal b { font-weight: 600; }
 
-/* Team: Gruppenfoto */
+/* Team: Gruppenfoto rechts neben Überschrift und Text (am Handy darunter) */
+.head.photo-head { grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.head.photo-head .display { margin-bottom: 16px; }
 .team-photo { margin: 0; }
 .team-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .team-photo figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
@@ -311,7 +314,7 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
   .stecker { max-width: 360px; margin-top: 8px; }
   .next-call { grid-template-columns: auto 1fr auto; }
   .cards, .cards.two { grid-template-columns: 1fr; }
-  .head { grid-template-columns: 1fr; gap: 16px; }
+  .head, .head.photo-head { grid-template-columns: 1fr; gap: 16px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > :first-child { grid-column: 1 / -1; }
 

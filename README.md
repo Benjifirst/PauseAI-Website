@@ -61,7 +61,7 @@ Bitte keine privaten Daten (Telefonnummern, Privatadressen, Passwörter) ins Rep
 
 Jeder Push auf `main` geht automatisch auf https://pauseai.at online (GitHub Pages, siehe Reiter *Actions*).
 
-Name und E-Mail (Impressum, Datenschutz, Kontakt-Knopf) stehen absichtlich nicht im Code. Sie liegen als Secrets unter *Settings → Secrets and variables → Actions* (`IMPRESSUM_NAME`, `IMPRESSUM_EMAIL`) und werden beim Veröffentlichen eingesetzt. Lokal sieht man deshalb nur die Platzhalter, und der E-Mail-Knopf bleibt ausgeblendet. Fehlt ein Secret, bricht die Veröffentlichung ab.
+Der Name im Impressum und in der Datenschutzerklärung steht absichtlich nicht im Code. Er liegt als Secret unter *Settings → Secrets and variables → Actions* (`IMPRESSUM_NAME`) und wird beim Veröffentlichen eingesetzt. Lokal sieht man deshalb nur den Platzhalter. Fehlt das Secret, bricht die Veröffentlichung ab. Die Kontakt-E-Mail (offizielle PauseAI-Adresse) steht direkt in `js/inhalte.js`, `impressum.html` und `datenschutz.html`.
 
 ## Lokal ansehen
 

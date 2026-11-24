@@ -14,10 +14,8 @@ window.PAUSEAI_AT = {
   // WhatsApp-Gruppe von PauseAI Österreich. Leer = wird ausgeblendet.
   whatsapp: 'https://chat.whatsapp.com/JxvFMVZ1MMQ5mFDlwAmSYH',
 
-  // Kontakt-E-Mail. Leer = wird ausgeblendet.
-  // %%IMPRESSUM_EMAIL%% wird beim Veröffentlichen aus dem GitHub-Secret eingesetzt
-  // (siehe README, „Veröffentlichen“). Lokal bleibt der Knopf deshalb ausgeblendet.
-  email: '%%IMPRESSUM_EMAIL%%',
+  // Kontakt-E-Mail (offizielle PauseAI-Adresse). Leer = wird ausgeblendet.
+  email: 'benjamin.legerer@pauseai.info',
 
   // Der regelmäßige Online-Call
   wochenCall: {

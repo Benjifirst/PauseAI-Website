@@ -120,6 +120,15 @@
     var cd = box.querySelector('.countdown');
     cd.textContent = n.live ? 'Läuft gerade' : countdownText(n.start - now);
     cd.classList.toggle('live', n.live);
+
+    // Zeile in der Terminliste: Standard-Uhrzeit aus inhalte.js, beim nächsten Call
+    // mit abweichender Uhrzeit ein Hinweis, damit oben und unten dasselbe steht.
+    var time = document.querySelector('[data-weekly] [data-call-time]');
+    if (time) {
+      var regular = cfg.wochenCall.beginn || '19:00';
+      time.textContent = WOCHENTAGE[cfg.wochenCall.wochentag] + ', ' + regular + ' Uhr (österreichische Zeit)' +
+        (n.beginn !== regular ? ' · am ' + d.getUTCDate() + '. ' + MONATE[d.getUTCMonth()] + ' ausnahmsweise ' + n.beginn + ' Uhr' : '');
+    }
   }
 
   // ---------- Terminliste ----------

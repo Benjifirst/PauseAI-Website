@@ -1,6 +1,6 @@
 # Veröffentlicht die Website bei jedem Push auf main über GitHub Pages.
-# Name und E-Mail (Impressum, Kontakt) kommen aus Repo-Secrets
-# und stehen deshalb nicht im Code.
+# Der Name im Impressum kommt aus einem Repo-Secret und steht deshalb nicht im Code.
+# Die Kontakt-E-Mail ist die offizielle PauseAI-Adresse und steht direkt im Code.
 name: Website veröffentlichen
 
 on:
@@ -34,7 +34,6 @@ jobs:
       - name: Kontaktdaten einsetzen
         env:
           IMPRESSUM_NAME: ${{ secrets.IMPRESSUM_NAME }}
-          IMPRESSUM_EMAIL: ${{ secrets.IMPRESSUM_EMAIL }}
         run: python3 .github/scripts/kontaktdaten.py _site/impressum.html _site/datenschutz.html _site/js/inhalte.js
 
       - uses: actions/upload-pages-artifact@v4
