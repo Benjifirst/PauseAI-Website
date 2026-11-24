@@ -145,23 +145,22 @@ h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Kopfbereich ---------- */
 .hero { padding: 56px 0 48px; border-bottom: 1px solid var(--line); }
-.hero-grid { display: grid; grid-template-columns: 1fr 240px; gap: 48px; align-items: end; }
+.hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: end; }
 .hero h1 { font: 400 clamp(44px, 8vw, 76px)/1.04 var(--title); letter-spacing: .06em; margin: 24px 0 16px; }
 .hero h1 em { font-style: normal; border-bottom: 2px solid var(--gold); }
 .hero .lead { font-size: 18px; max-width: 54ch; margin: 0 0 32px; }
 
-/* Ornament: Gitterwerk nach Wiener Werkstätte */
-.lattice { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; width: 100%; aspect-ratio: 1; align-self: center; }
-.lattice i { border: 1px solid var(--line); }
-.lattice i.k { background: var(--ink); border-color: var(--ink); }
-.lattice i.g { border-color: var(--gold); position: relative; }
-.lattice i.g::after { content: ''; position: absolute; inset: 30%; background: var(--gold); }
+/* Stecker-Animation neben der Überschrift (js/stecker.js) */
+.stecker { width: 100%; aspect-ratio: 3 / 2; align-self: end; cursor: pointer; }
+.stecker svg { width: 100%; height: 100%; }
 
 /* Nächster Termin */
 .next-call {
   margin-top: 48px; border-left: 2px solid var(--gold); padding-left: 20px;
-  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0 24px;
+  display: grid; grid-template-columns: auto 1fr 340px; align-items: center; gap: 0 24px;
 }
+/* rechte Spalte so breit wie die Animation darüber: der Anmelde-Knopf steht mittig unter dem Logo */
+.next-call .go { justify-content: center; }
 .next-call .date { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .next-call .wd, .next-call .mon { color: var(--gold-deep); }
 .next-call .day { font: 400 44px/1 var(--title); -webkit-text-stroke: .025em currentColor; margin: 2px 0; font-variant-numeric: tabular-nums; }
@@ -217,6 +216,19 @@ section.block.last { padding-bottom: var(--section); }
 .card.dark .label::before { background: var(--gold-light); }
 .card.dark .button { border-color: #fff; color: #fff; }
 .card.dark .button:hover { background: var(--ink-soft); }
+
+/* ---------- Forderungen ---------- */
+.label.sub { font-weight: 600; margin: 40px 0 16px; }
+.demands { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.demands li {
+  display: grid; grid-template-columns: 56px 1fr; gap: var(--gap); align-items: center;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.demands .num { font: 400 40px/1 var(--title); color: var(--gold-deep); }
+.demands h3 { margin-bottom: 2px; }
+.demands p { margin: 0; color: var(--muted); font-size: 15px; }
+.goal { margin: 28px 0 0; padding: 20px 24px; border-left: 2px solid var(--gold); background: var(--panel); font-size: 17px; max-width: 70ch; }
+.goal b { font-weight: 600; }
 
 /* Team: Gruppenfoto */
 .team-photo { margin: 0; }
@@ -296,7 +308,8 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
 /* ---------- Schmal ---------- */
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .lattice { display: none; }
+  .stecker { max-width: 360px; margin-top: 8px; }
+  .next-call { grid-template-columns: auto 1fr auto; }
   .cards, .cards.two { grid-template-columns: 1fr; }
   .head { grid-template-columns: 1fr; gap: 16px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -332,6 +345,9 @@ ul.marks li::before { content: ''; position: absolute; left: 0; top: 15px; width
   .row .k .big { display: inline; font-size: 20px; font-weight: 600; margin-right: 8px; }
   .row[data-weekly] .tag { display: none; }   /* „jede Woche“ steht schon darüber */
   .row > :nth-child(2) { grid-column: 1; }
+  .demands li { grid-template-columns: 32px 1fr; align-items: start; padding: 16px 0; }
+  .demands .num { font-size: 32px; }
+  .goal { padding: 16px 18px; font-size: 16px; }
   .quote { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
   .quote .k { padding-top: 0; }
   .brand-name { font-size: 17px; letter-spacing: .16em; margin-right: -.16em; }

@@ -173,67 +173,6 @@
     });
   }
 
-  // ---------- Ornament (Gitterwerk) ----------
-  var lattice = document.querySelector('.lattice');
-  if (lattice) {
-    var pattern = 'k......k' + '........' + '..k..k..' + '...gg...' + '...gg...' + '..k..k..' + '........' + 'k......k';
-    for (var i = 0; i < pattern.length; i++) {
-      var c = pattern[i];
-      lattice.appendChild(el('i', c === 'k' ? 'k' : c === 'g' ? 'g' : null));
-    }
-    wipeLattice(lattice);
-  }
-
-  // Wischen über das Gitterwerk: Über einer Kachel wendet sich diese einmal um die eigene Achse.
-  // Im Spalt zwischen zwei Kacheln wenden sich beide, an einer Kreuzung alle vier.
-  // Von selbst bewegt sich nichts. Bei "Bewegung reduzieren" im System bleibt das Gitter still.
-  function wipeLattice(host) {
-    if (!host.animate) return;
-    var N = 8;         // Kacheln pro Zeile und Spalte
-    var EDGE = 2;      // der Spalt zählt ein wenig in die Kachel hinein, damit man ihn leichter trifft
-    var calm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-    var flip = [
-      { transform: 'perspective(260px) rotateY(0deg)' },
-      { transform: 'perspective(260px) rotateY(180deg)' }
-    ];
-    var held = {};     // Kacheln unter dem Zeiger: wenden sich erst wieder, nachdem er sie verlassen hat
-
-    // Welche Spalten bzw. Zeilen berührt der Zeiger? Im Spalt sind es die beiden angrenzenden.
-    function touched(pos, pitch, w, gap) {
-      var out = [];
-      for (var i = 0; i < N; i++) {
-        if (pos >= i * pitch - gap - EDGE && pos <= i * pitch + w + gap + EDGE) out.push(i);
-      }
-      return out;
-    }
-
-    function onPointer(e) {
-      if (calm && calm.matches) return;
-      var box = host.getBoundingClientRect();
-      var gap = parseFloat(getComputedStyle(host).columnGap) || 0;
-      var pitch = (box.width + gap) / N;
-      var rows = touched(e.clientY - box.top, pitch, pitch - gap, gap);
-      var cols = touched(e.clientX - box.left, pitch, pitch - gap, gap);
-      var now = {};
-      rows.forEach(function (r) {
-        cols.forEach(function (c) {
-          var i = r * N + c;
-          var node = host.children[i];
-          now[i] = true;
-          if (!node || held[i] || node.turning) return;
-          node.turning = true;
-          node.animate(flip, { duration: 600, easing: 'cubic-bezier(.65, 0, .35, 1)' })
-            .onfinish = function () { node.turning = false; };
-        });
-      });
-      held = now;
-    }
-
-    host.addEventListener('pointermove', onPointer);
-    host.addEventListener('pointerdown', onPointer);   // Antippen am Tablet
-    host.addEventListener('pointerleave', function () { held = {}; });
-  }
-
   document.querySelectorAll('[data-year]').forEach(function (n) { n.textContent = new Date().getFullYear(); });
 
   renderNext();
