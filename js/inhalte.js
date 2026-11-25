@@ -15,7 +15,7 @@ window.PAUSEAI_AT = {
   whatsapp: 'https://chat.whatsapp.com/JxvFMVZ1MMQ5mFDlwAmSYH',
 
   // Kontakt-E-Mail (offizielle PauseAI-Adresse). Leer = wird ausgeblendet.
-  email: 'benjamin.legerer@pauseai.info',
+  email: 'austria@pauseai.info',
 
   // Der regelmäßige Online-Call
   wochenCall: {
