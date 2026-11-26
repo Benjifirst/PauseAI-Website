@@ -73,12 +73,18 @@
       <div class="hero-grid">
         <div>
           <p class="kicker">PauseAI Österreich</p>
-          <h1>Kontrollverlust <em>verhindern.</em></h1>
-          <p class="lead">Niemand weiß heute, wie man immer mächtigere KI-Systeme zuverlässig unter Kontrolle hält. Trotzdem bauen KI-Firmen wie OpenAI, Google DeepMind und Anthropic genau solche Modelle, ohne verbindliche Regeln. Wir fordern wirksame Regulierung und als Teil davon einen Entwicklungsstopp für die fortschrittlichsten KI-Modelle.</p>
+          <h1>Kontroll&shy;verlust <em>verhindern.</em></h1>
+          <!-- Am Handy steht erst die Kurzfassung, „Mehr“ zeigt den ganzen Text -->
+          <p class="lead">
+            <span class="lead-lang">Niemand weiß heute, wie man immer mächtigere KI-Systeme zuverlässig unter Kontrolle hält. Trotzdem bauen KI-Firmen wie OpenAI, Google DeepMind und Anthropic genau solche Modelle, ohne verbindliche Regeln. Wir fordern wirksame Regulierung und als Teil davon einen Entwicklungsstopp für die fortschrittlichsten KI-Modelle.</span>
+            <span class="lead-kurz">KI-Firmen bauen immer mächtigere Modelle, ohne verbindliche Regeln. Niemand weiß, wie man sie zuverlässig unter Kontrolle hält. Wir fordern wirksame Regulierung. <button type="button" class="lead-more">Mehr</button></span>
+          </p>
           <div class="actions">
             <a class="button primary" href="#mitmachen">Mitmachen</a>
-            <a class="button" href="https://pauseai.info/donate" target="_blank" rel="noopener">An PauseAI Global spenden</a>
+            <a class="button nur-laptop" href="https://pauseai.info/donate" target="_blank" rel="noopener">An PauseAI Global spenden</a>
+            <a class="button nur-handy" href="#warum">Warum?</a>
           </div>
+          <p class="credit nur-handy">Foto: PauseAI-Protest vor Google DeepMind, London</p>
         </div>
         <div class="stecker" aria-hidden="true"></div>
       </div>
@@ -102,6 +108,12 @@
     </div>
   </section>
 
+  <!-- Schnelleinstieg (nur am Handy) -->
+  <nav class="band nur-handy" aria-label="Schnelleinstieg">
+    <a href="#forderungen"><span class="t-k">Forderungen</span><strong>Österreich kann vorangehen.</strong><span class="t-go">Was wir fordern →</span></a>
+    <a href="#warum"><span class="t-k">Warum</span><strong>Der KI-Wettlauf braucht Grenzen.</strong><span class="t-go">Die Risiken →</span></a>
+  </nav>
+
   <!-- Über uns -->
   <section class="block" id="ueber-uns">
     <div class="wrap">
@@ -110,6 +122,8 @@
         <p class="display">Unsere Zukunft, unsere Entscheidung.</p>
         <p class="intro">Wir sind Teil der internationalen Organisation <a href="https://pauseai.info" target="_blank" rel="noopener">PauseAI</a>. Wir wollen über unsere Zukunft mitentscheiden, statt einzelne KI-Firmen unreguliert forschen zu lassen, die dabei unser aller Leben aufs Spiel setzen.</p>
       </div>
+      <button type="button" class="more-btn" aria-expanded="false" aria-controls="mehr-ueber-uns">Mehr über uns</button>
+      <div class="more" id="mehr-ueber-uns">
       <div class="cards">
         <article class="card">
           <h3>International</h3>
@@ -124,6 +138,7 @@
           <p>Wir informieren über die Risiken von KI, organisieren Treffen und suchen das Gespräch mit der Politik.</p>
         </article>
       </div>
+      </div>
     </div>
   </section>
 
@@ -135,6 +150,8 @@
         <p class="display">Der KI-Wettlauf braucht verbindliche Grenzen.</p>
         <p class="intro">Führende KI-Forschende warnen vor den Risiken. Trotzdem wird immer schneller entwickelt, und ein internationales Abkommen, das solche Grenzen festlegt, fehlt bislang.</p>
       </div>
+      <button type="button" class="more-btn" aria-expanded="false" aria-controls="mehr-warum">Weiterlesen: Risiko, Lösung, Stimmen</button>
+      <div class="more" id="mehr-warum">
       <div class="cards two">
         <article class="card">
           <h3>Das Risiko: Kontrollverlust</h3>
@@ -165,6 +182,7 @@
         </figure>
       </div>
       <p class="note">Zitate aus dem Englischen übersetzt. Bücher, Hintergründe und Antworten auf häufige Fragen: <a href="weiterlesen.html">Weiterlesen</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -177,6 +195,8 @@
         <p class="intro">Österreich hat schon öfter internationale Verbote mit angestoßen, etwa beim Atomwaffenverbot und mit der Wiener Konferenz zu autonomen Waffen 2024. Dazu ist Wien einer der vier Amtssitze der UNO. Diese Erfahrung braucht es jetzt auch bei KI.</p>
       </div>
 
+      <button type="button" class="more-btn" aria-expanded="false" aria-controls="mehr-arbeit">So arbeiten wir</button>
+      <div class="more" id="mehr-arbeit">
       <p class="label sub">So arbeiten wir</p>
       <div class="cards">
         <article class="card">
@@ -191,6 +211,7 @@
           <h3>International handeln</h3>
           <p>Ein Problem, das an keiner Grenze haltmacht, löst kein Land allein. Als Teil von PauseAI arbeiten wir mit Gruppen in vielen Ländern zusammen und sprechen mit einer Stimme.</p>
         </article>
+      </div>
       </div>
 
       <p class="label sub">Das fordern wir von Österreich</p>

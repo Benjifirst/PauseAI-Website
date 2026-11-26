@@ -36,6 +36,48 @@
     });
   }
 
+  // ---------- Am Handy: kürzen und aufklappen ----------
+  // Am Laptop blendet das CSS die Knöpfe aus und zeigt alles; die Klicks wirken nur am Handy.
+  var handy = window.matchMedia('(max-width: 640px)');
+
+  var lead = document.querySelector('.hero .lead');
+  var leadMore = lead && lead.querySelector('.lead-more');
+  if (leadMore) leadMore.addEventListener('click', function () { lead.classList.add('open'); });
+
+  document.querySelectorAll('.more-btn').forEach(function (b) {
+    var box = document.getElementById(b.getAttribute('aria-controls'));
+    var label = b.textContent;
+    if (!box) return;
+    b.addEventListener('click', function () {
+      var open = box.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.textContent = open ? 'Weniger anzeigen' : label;
+    });
+  });
+
+  // Forderungen: Überschrift antippen klappt die Erklärung auf
+  document.querySelectorAll('.demands li').forEach(function (li) {
+    var h = li.querySelector('h3');
+    function toggle() {
+      if (!handy.matches) return;
+      h.setAttribute('aria-expanded', li.classList.toggle('open') ? 'true' : 'false');
+    }
+    function setup() {
+      if (handy.matches) {
+        h.setAttribute('tabindex', '0'); h.setAttribute('role', 'button');
+        h.setAttribute('aria-expanded', li.classList.contains('open') ? 'true' : 'false');
+      } else {
+        h.removeAttribute('tabindex'); h.removeAttribute('role'); h.removeAttribute('aria-expanded');
+      }
+    }
+    li.addEventListener('click', toggle);
+    h.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    setup();
+    if (handy.addEventListener) handy.addEventListener('change', setup); else handy.addListener(setup);
+  });
+
   // ---------- Zeit in Wien ----------
   // Aktuelle Wiener Uhrzeit als "Wanduhr"-Zeitstempel (UTC-Felder = Wiener Ortszeit).
   function viennaNow() {
