@@ -16,7 +16,7 @@ Reines HTML, CSS und JavaScript, ohne Build-Schritt, Frameworks oder externe Abh
 | `css/style.css` | Gestaltung |
 | `impressum.html`, `datenschutz.html` | Rechtliches; Name und E-Mail stehen dort nur als `%%IMPRESSUM_…%%` (siehe „Veröffentlichen“) |
 | `.github/workflows/pages.yml` | Veröffentlicht die Seite bei jedem Push auf `main` |
-| `assets/` | Logo, Icons, Vorschaubild für geteilte Links (`vorschaubild.jpg`), Gruppenfoto (`assets/fotos/`) |
+| `assets/` | Logo, Icons, Vorschaubild für geteilte Links (`vorschau-startseite.jpg`), Gruppenfoto (`assets/fotos/`) |
 | `fonts/PoiretOne-Regular.ttf`, `fonts/OFL.txt` | Titelschrift, lokal eingebunden (kein Google Fonts), mit Lizenztext |
 | `404.html` | Fehlerseite für unbekannte Adressen |
 | `robots.txt`, `sitemap.xml` | Für Suchmaschinen; neue Unterseiten in `sitemap.xml` ergänzen |
