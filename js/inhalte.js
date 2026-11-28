@@ -41,11 +41,11 @@ window.PAUSEAI_AT = {
   // },
   termine: [
     {
-      datum: '2026-11-17',
-      beginn: '17:00',
-      titel: 'Erstes Treffen vor Ort',
-      untertitel: 'Wir lernen einander kennen, tauschen uns aus und planen die nächsten Schritte.',
-      ort: 'Café Stein, Währinger Straße 6–8, 1090 Wien',
+      datum: '2026-12-01',
+      beginn: '18:00',
+      titel: 'Live-Treffen PauseAI',
+      untertitel: 'Zum Kennenlernen und Austauschen.',
+      ort: 'Café Eiles, Josefstädter Straße 2, 1080 Wien',
       link: ''
     }
   ]
